@@ -1,15 +1,24 @@
-const products = require('../models/products');
+
+const express= require('express');
+const mongoose= require('mongoose');
+const Prod = require('../models/product');
+console.log("products",Prod)
+
+
 
 
 // create Product
 const createProduct =  async (req, res) => {
-    const products = new  Products({
-        name: req.body. name,
-        description:req.body. description
+    console.log("styu",req.body)
+    const product = new Prod({
+        name:req.body.name,
+        description:req.body.description
     })
+    console.log("ankur",product)
     try{
-        const Product = await products.save();
-        res.status(201).json(Product);
+        const pro = await product.create();
+        console.log("product",product)
+        res.status(201).json(pro);
     } catch(error){
         res.status(400).json({message: error.message});
     }
