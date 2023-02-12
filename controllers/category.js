@@ -11,15 +11,15 @@ const Category = require('../models/category');
 // create Product
 const createCategory =  async (req, res) => {
     console.log("styu",req.body)
-    const  category = new Category({
+    const  cate = new Category({
         name:req.body.name,
         description:req.body.description
     })
-    console.log("ankur",category)
+    // console.log("ankur",category)
     try{
-        const pro = await category.create();
+        const cat = await cate.save();
         // console.log("product",product)
-        res.status(201).json(pro);
+        res.status(201).json(cat);
     } catch(error){
         res.status(400).json({message: error.message});
     }
@@ -29,7 +29,7 @@ const createCategory =  async (req, res) => {
 //viewProduct
 const viewCategory = async (req, res) => {
     try{
-    const Category = await category.findOne();
+    const Category = await cate.findOne();
     res.status(200).json(Category);
 }   catch(error){
     res.status(400).json({message: error.message});
@@ -41,7 +41,7 @@ const viewCategory = async (req, res) => {
 // UPDATE Product
 const updateCategory = async (req, res) => {
     try{
-    const Category = await category.updateOne();
+    const Category = await cate.updateOne();
     res.status(200).json(Category);
 } catch(error)
 {
@@ -52,7 +52,7 @@ const updateCategory = async (req, res) => {
 // delete Product
 const deleteCategory = async (req, res) => {
     try{
-        const Category = await category.deleteOne();
+        const Category = await cate.deleteOne();
         res.status(200).json(Category);
     }  catch(error){
         res.status(400).json({message:error.message})

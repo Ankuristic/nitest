@@ -10,14 +10,14 @@ console.log("products",Prod)
 // create Product
 const createProduct =  async (req, res) => {
     console.log("styu",req.body)
-    const product = new Prod({
+    const pro = new Prod({
         name:req.body.name,
         description:req.body.description
     })
-    console.log("ankur",product)
+    console.log("ankur",pro)
     try{
-        const pro = await product.create();
-        console.log("product",product)
+        const prod = await pro.save();
+        console.log("product",pro)
         res.status(201).json(pro);
     } catch(error){
         res.status(400).json({message: error.message});
@@ -28,7 +28,7 @@ const createProduct =  async (req, res) => {
 //viewProduct
 const viewProduct = async (req, res) => {
     try{
-    const Product = await products.findOne();
+    const Product = await pro.findOne();
     res.status(200).json(Product);
 }   catch(error){
     res.status(400).json({message: error.message});
@@ -40,7 +40,7 @@ const viewProduct = async (req, res) => {
 // UPDATE Product
 const updateProduct = async (req, res) => {
     try{
-    const Product = await products.updateOne();
+    const Product = await pro.updateOne();
     res.status(200).json(Product);
 } catch(error)
 {
@@ -51,7 +51,7 @@ const updateProduct = async (req, res) => {
 // delete Product
 const deleteProduct = async (req, res) => {
     try{
-        const Product = await products.deleteOne();
+        const Product = await pro.deleteOne();
         res.status(200).json(Product);
     }  catch(error){
         res.status(400).json({message:error.message})
