@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employee List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h3><a href="/products/create">Create Product</a></h3>
+      <h1>Product List</h1>
+      <% if(products.length>0) { %>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th> Product id</th>
+            <th> Category id</th>
+            <th>Product Name</th>
+            <th>Category Name</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% for(var i=0; i<products.length;i++) { %>
+            <tr>
+              <td><a href="/products/show/<%= products[i]._id%>"><%= products[i].name%></a></td>
+              <td><%= products[i].position%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No Products found.</div>
+      <% } %>
+    </div>
+    <div class="break"></div>
+
+    <!--Display the links to the pages-->
+    <% if(products > 1) { %> <a href="/products>">Before</a> <% } %>
+    <% for(let i = 0; i <= products.length; i++) { %>
+        <% if(i === products) { %>
+        <a class="selectedLink" href="/products>"><%=i%></a>
+        <% continue; %>
+    <% } %>
+        <a href="/products>"><%=i%></a>
+        <% } %>
+        <% if(products < products.length) { %> <a href="/products>">After</a> <% } %>
+  </body>
+</html>
