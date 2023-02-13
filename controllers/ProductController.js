@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const Product = require("../models/Product");
 
-const employeeController = {};
+const productController = {};
 
-// Show list of employees
-employeeController.list = (req, res) => {
+// Show list of product
+productControlleroller.list = (req, res) => {
   Product.find({}).exec((err, products) => {
     if (err) {
       console.log("Error:", err);
@@ -14,9 +14,9 @@ employeeController.list = (req, res) => {
     }
   });
 };
-//pagination  of the employee list
+//pagination  of the product list
 
-employeeController.paginate = (req,res) => {
+productController.paginate = (req,res) => {
   var page = parseInt(req.query.page)
   var size = parseInt(req.query.size)
   var query = {}
@@ -38,8 +38,8 @@ employeeController.paginate = (req,res) => {
 
 
 
-// Show employee by id
-employeeController.show = (req, res) => {
+// Show category by id
+productController.show = (req, res) => {
   Product.findOne({_id: req.params.id}).exec((err, product) => {
     if (err) {
       console.log("Error:", err);
@@ -50,13 +50,13 @@ employeeController.show = (req, res) => {
   });
 };
 
-// Create new employee
-employeeController.create = (req, res) => {
+// Create new product
+productController.create = (req, res) => {
   res.render("../views/products/create");
 };
 
-// Save new employee
-employeeController.save = (req, res) => {
+// Save new product
+productController.save = (req, res) => {
   const product = new   Product(req.body);
 
   product.save((err) => {
@@ -70,8 +70,8 @@ employeeController.save = (req, res) => {
   });
 };
 
-// Edit an employee
-employeeController.edit = (req, res) => {
+// Edit an product
+productController.edit = (req, res) => {
   Product.findOne({_id: req.params.id}).exec((err, product) => {
     if (err) {
       console.log("Error:", err);
@@ -82,8 +82,8 @@ employeeController.edit = (req, res) => {
   });
 };
 
-// Update an employee
-employeeController.update = (req, res) => {
+// Update an product
+productController.update = (req, res) => {
   Product.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, { new: true }, function (err, product) {
     if (err) {
       console.log(err);
@@ -93,8 +93,8 @@ employeeController.update = (req, res) => {
   });
 };
 
-// Delete an employee
-employeeController.delete = (req, res) => {
+// Delete an product
+productController.delete = (req, res) => {
   Product.remove({_id: req.params.id}, (err) => {
     if (err) {
       console.log(err);
@@ -106,4 +106,4 @@ employeeController.delete = (req, res) => {
   });
 };
 
-module.exports = employeeController;
+module.exports = productController;

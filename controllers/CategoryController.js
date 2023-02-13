@@ -3,7 +3,7 @@ const Category = require("../models/Category");
 
 const categoryController = {};
 
-// Show list of employees
+// Show list of  category
 categoryController.list = (req, res) => {
   Category.find({}).exec((err, categorys) => {
     if (err) {
@@ -15,7 +15,30 @@ categoryController.list = (req, res) => {
   });
 };
 
-// Show employee by id
+//pagination  of the product list
+
+categoryController.paginate = (req,res) => {
+  var page = parseInt(req.query.page)
+  var size = parseInt(req.query.size)
+  var query = {}
+  if(page< 0 || pageNo === 0) {
+        response = {"error" : true,"message" : "invalid page number, should start with 1"};
+        return res.json(response)
+  }
+  query.skip = size * (page - 1)
+  query.limit = size
+  Product.find({},{},function(err,products){
+    if (err) {
+      console.log("Error:", err);
+    }
+    else {
+      res.render("../views/products/index", {products: products});
+    }
+  })
+}
+
+
+// Show by id
 categoryController.show = (req, res) => {
   Category.findOne({_id: req.params.id}).exec((err, category) => {
     if (err) {
@@ -27,12 +50,12 @@ categoryController.show = (req, res) => {
   });
 };
 
-// Create new employee
+// Create new category
 categoryController.create = (req, res) => {
   res.render("../views/categorys/create");
 };
 
-// Save new employee
+// Save new category
 categoryController.save = (req, res) => {
   const category = new   Category(req.body);
 
@@ -47,7 +70,7 @@ categoryController.save = (req, res) => {
   });
 };
 
-// Edit an employee
+// Edit an category
 categoryController.edit = (req, res) => {
   Category.findOne({_id: req.params.id}).exec((err, category) => {
     if (err) {
@@ -59,7 +82,7 @@ categoryController.edit = (req, res) => {
   });
 };
 
-// Update an employee
+// Update an category
 categoryController.update = (req, res) => {
   Category.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, { new: true }, function (err, category) {
     if (err) {
@@ -70,7 +93,7 @@ categoryController.update = (req, res) => {
   });
 };
 
-// Delete an employee
+// Delete an category
 categoryController.delete = (req, res) => {
   Category.remove({_id: req.params.id}, (err) => {
     if (err) {
