@@ -4,7 +4,7 @@ const Product = require("../models/Product");
 const productController = {};
 
 // Show list of product
-productControlleroller.list = (req, res) => {
+productController.list = (req, res) => {
   Product.find({}).exec((err, products) => {
     if (err) {
       console.log("Error:", err);
