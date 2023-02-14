@@ -64,7 +64,7 @@ productController.save = (req, res) => {
       console.log(err);
       res.render("../views/products/create");
     } else {
-      console.log("Successfully created an employee.");
+      console.log("Successfully created an product.");
       res.redirect("/products/show/"+product._id);
     }
   });

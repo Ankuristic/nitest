@@ -2,13 +2,12 @@ const mongoose = require('mongoose');
 
 const CategorySchema = new mongoose.Schema({
  
-  
-    CategoryName:{
+  name:{
       type: String,
       // trim: true,
       // required: true,
     },
-    CategoryDescription:{
+    description:{
       type: String,
       // required: true,
     },

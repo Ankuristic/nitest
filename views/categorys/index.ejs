@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Employee List</title>
+    <title>Category List</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <div class="container">
-      <h3><a href="/categorys/create">Create Product</a></h3>
+      <h3><a href="/categorys/create">Create Category</a></h3>
       <h1>Category List</h1>
       <% if(categorys.length>0) { %>
       <table class="list-table">
         <thead>
           <tr>
-            <th>Product Name</th>
-            <th>Position</th>
+            <th> Category ID </th>
+            <th>Category Name</th>
           </tr>
         </thead>
         <tbody>
 
           <% for(var i=0; i<categorys.length;i++) { %>
             <tr>
+              <th > <%=categorys[i]._id%></th>
               <td><a href="/categorys/show/<%= categorys[i]._id%>"><%= categorys[i].name%></a></td>
-              <td><%= categorys[i].position%></td>
             </tr>
           <% } %>
         </tbody>
       </table>
       <% } else { %>
-        <div>No Products found.</div>
+        <div>No Category  found.</div>
       <% } %>
     </div>
 
     <div class="break"></div>
 
     <!--Display the links to the pages-->
-    <% if(products > 1) { %> <a href="/products>">Before</a> <% } %>
-    <% for(let i = 0; i <= products.length; i++) { %>
-        <% if(i === products) { %>
-        <a class="selectedLink" href="/products>"><%=i%></a>
+    <% if(categorys > 1) { %> <a href="/categorys>">Before</a> <% } %>
+    <% for(let i = 0; i <= categorys.length; i++) { %>
+        <% if(i === categorys) { %>
+        <a class="selectedLink" href="/categorys>"><%=i%></a>
         <% continue; %>
     <% } %>
-        <a href="/products>"><%=i%></a>
+        <a href="/categorys>"><%=i%></a>
         <% } %>
-        <% if(products < products.length) { %> <a href="/products>">After</a> <% } %>
+        <% if(categorys < categorys.length) { %> <a href="/categorys>">After</a> <% } %>
   </body>
 </html>

@@ -16,17 +16,16 @@
         <thead>
           <tr>
             <th> Product id</th>
-            <th> Category id</th>
             <th>Product Name</th>
-            <th>Category Name</th>
+          
           </tr>
         </thead>
         <tbody>
 
           <% for(var i=0; i<products.length;i++) { %>
             <tr>
+              <th scope ="row"><%= products[i]._id %> </th>
               <td><a href="/products/show/<%= products[i]._id%>"><%= products[i].name%></a></td>
-              <td><%= products[i].position%></td>
             </tr>
           <% } %>
         </tbody>

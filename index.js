@@ -19,7 +19,7 @@ app.set('views',path.join(__dirname,'views'));
 
 app.use('/',Home)
 app.use('/products',productrouter);
-app.use('/category',categoryrouter);
+app.use('/categorys',categoryrouter);
 app.listen(port, function (err) {
   if (err) {
     console.log(`Error in running the server: ${err}`);

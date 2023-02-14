@@ -32,7 +32,7 @@ categoryController.paginate = (req,res) => {
       console.log("Error:", err);
     }
     else {
-      res.render("../views/products/index", {products: products});
+      res.render("../views/categorys/index", {products: products});
     }
   })
 }
@@ -64,7 +64,7 @@ categoryController.save = (req, res) => {
       console.log(err);
       res.render("../views/categorys/create");
     } else {
-      console.log("Successfully created an employee.");
+      console.log("Successfully created an category.");
       res.redirect("/categorys/show/"+category._id);
     }
   });
